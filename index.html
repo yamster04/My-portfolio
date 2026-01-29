@@ -1174,19 +1174,13 @@
                         title="Mark Noel - Video Editing Showcase"
                         id="portfolioVideo">
                     </iframe>
-                    <div class="video-overlay" id="videoOverlay">
-                        <div class="play-btn-large" onclick="playPortfolioVideo()">
-                            <i class="fas fa-play-circle"></i>
-                            <span>Click to Play Video<br><small>Sound will play when you click</small></span>
-                        </div>
-                    </div>
                 </div>
                 <div class="youtube-controls">
                     <a href="https://youtu.be/aoStAZj00OU" target="_blank" class="yt-btn">
                         <i class="fab fa-youtube"></i> Watch on YouTube
                     </a>
                     <button class="yt-btn" onclick="playPortfolioVideo()">
-                        <i class="fas fa-play"></i> Play Video Here
+                        <i class="fas fa-play"></i> Play Video
                     </button>
                 </div>
             </div>
@@ -1422,11 +1416,10 @@
             observer.observe(card);
         });
              // ===== PORTFOLIO VIDEO CONTROLS =====
-function playPortfolioVideo() {
+<section id="portfolio" class="portfolio">
     const iframe = document.getElementById('portfolioVideo');
-    const overlay = document.getElementById('videoOverlay');
     
-    if (iframe && overlay) {
+    if (iframe) {
         // Change iframe src to include autoplay
         const currentSrc = iframe.src;
         if (!currentSrc.includes('autoplay=1')) {
@@ -1435,31 +1428,54 @@ function playPortfolioVideo() {
                 : currentSrc + '?autoplay=1';
         }
         
-        // Send play command to YouTube (works if YouTube API is loaded)
+        // Send play command to YouTube
         try {
             iframe.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
         } catch (e) {
             console.log('YouTube API not ready yet');
         }
         
-        // Hide overlay with fade effect
-        overlay.style.opacity = '0';
-        overlay.style.pointerEvents = 'none';
-        
-        // Remove overlay completely after fade
-        setTimeout(() => {
-            overlay.style.display = 'none';
-        }, 500);
+        // Change button text to show it's playing
+        const playBtn = document.querySelector('[onclick="playPortfolioVideo()"]');
+        if (playBtn) {
+            playBtn.innerHTML = '<i class="fas fa-pause"></i> Pause Video';
+            playBtn.onclick = function() {
+                pausePortfolioVideo();
+            };
+        }
     }
 }
 
-// Make overlay clickable
-document.addEventListener('DOMContentLoaded', function() {
-    const overlay = document.getElementById('videoOverlay');
-    if (overlay) {
-        overlay.addEventListener('click', playPortfolioVideo);
+function pausePortfolioVideo() {
+    const iframe = document.getElementById('portfolioVideo');
+    
+    if (iframe) {
+        // Send pause command to YouTube
+        try {
+            iframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+        } catch (e) {
+            console.log('YouTube API not ready yet');
+        }
+        
+        // Change button text back
+        const pauseBtn = document.querySelector('[onclick="pausePortfolioVideo()"]');
+        if (pauseBtn) {
+            pauseBtn.innerHTML = '<i class="fas fa-play"></i> Play Video';
+            pauseBtn.onclick = function() {
+                playPortfolioVideo();
+            };
+        }
     }
-});
+}
+
+// Remove the overlay click event since overlay is gone
+// document.addEventListener('DOMContentLoaded', function() {
+//     const overlay = document.getElementById('videoOverlay');
+//     if (overlay) {
+//         overlay.addEventListener('click', playPortfolioVideo);
+//     }
+// });
     </script>
 </body>
+
 </html>
