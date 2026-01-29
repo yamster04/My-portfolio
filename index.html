@@ -1337,7 +1337,7 @@
         </div>
     </footer>
 
-    <script>
+       <script>
         // Mobile Menu Toggle
         document.querySelector('.menu-toggle').addEventListener('click', function() {
             document.querySelector('.nav-links').classList.toggle('active');
@@ -1415,67 +1415,102 @@
             card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
             observer.observe(card);
         });
-             // ===== PORTFOLIO VIDEO CONTROLS =====
-<section id="portfolio" class="portfolio">
-    const iframe = document.getElementById('portfolioVideo');
-    
-    if (iframe) {
-        // Change iframe src to include autoplay
-        const currentSrc = iframe.src;
-        if (!currentSrc.includes('autoplay=1')) {
-            iframe.src = currentSrc.includes('?') 
-                ? currentSrc + '&autoplay=1' 
-                : currentSrc + '?autoplay=1';
-        }
-        
-        // Send play command to YouTube
-        try {
-            iframe.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
-        } catch (e) {
-            console.log('YouTube API not ready yet');
-        }
-        
-        // Change button text to show it's playing
-        const playBtn = document.querySelector('[onclick="playPortfolioVideo()"]');
-        if (playBtn) {
-            playBtn.innerHTML = '<i class="fas fa-pause"></i> Pause Video';
-            playBtn.onclick = function() {
-                pausePortfolioVideo();
-            };
-        }
-    }
-}
 
-function pausePortfolioVideo() {
-    const iframe = document.getElementById('portfolioVideo');
-    
-    if (iframe) {
-        // Send pause command to YouTube
-        try {
-            iframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
-        } catch (e) {
-            console.log('YouTube API not ready yet');
+        // ===== YOUTUBE VIDEO PLAYER CONTROLS =====
+        function playPortfolioVideo() {
+            const iframe = document.getElementById('portfolioVideo');
+            const playBtn = document.querySelector('.yt-btn[onclick="playPortfolioVideo()"]');
+            
+            if (iframe) {
+                // Get current iframe source
+                let currentSrc = iframe.src;
+                
+                // Remove any existing autoplay parameter
+                currentSrc = currentSrc.replace(/&?autoplay=1/g, '');
+                
+                // Add autoplay parameter
+                if (currentSrc.includes('?')) {
+                    currentSrc += '&autoplay=1';
+                } else {
+                    currentSrc += '?autoplay=1';
+                }
+                
+                // Update iframe source to trigger autoplay
+                iframe.src = currentSrc;
+                
+                // Try to send play command via YouTube API
+                try {
+                    iframe.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+                } catch (e) {
+                    console.log('Playing via src change');
+                }
+                
+                // Change button to pause
+                if (playBtn) {
+                    playBtn.innerHTML = '<i class="fas fa-pause"></i> Pause Video';
+                    playBtn.setAttribute('onclick', 'pausePortfolioVideo()');
+                }
+            }
         }
-        
-        // Change button text back
-        const pauseBtn = document.querySelector('[onclick="pausePortfolioVideo()"]');
-        if (pauseBtn) {
-            pauseBtn.innerHTML = '<i class="fas fa-play"></i> Play Video';
-            pauseBtn.onclick = function() {
-                playPortfolioVideo();
-            };
-        }
-    }
-}
 
-// Remove the overlay click event since overlay is gone
-// document.addEventListener('DOMContentLoaded', function() {
-//     const overlay = document.getElementById('videoOverlay');
-//     if (overlay) {
-//         overlay.addEventListener('click', playPortfolioVideo);
-//     }
-// });
+        function pausePortfolioVideo() {
+            const iframe = document.getElementById('portfolioVideo');
+            const pauseBtn = document.querySelector('.yt-btn[onclick="pausePortfolioVideo()"]');
+            
+            if (iframe) {
+                // Send pause command to YouTube
+                try {
+                    iframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+                } catch (e) {
+                    console.log('Pausing via YouTube API');
+                }
+                
+                // Change button back to play
+                if (pauseBtn) {
+                    pauseBtn.innerHTML = '<i class="fas fa-play"></i> Play Video';
+                    pauseBtn.setAttribute('onclick', 'playPortfolioVideo()');
+                }
+            }
+        }
+
+        // Alternative method: Direct play using YouTube player
+        function playVideoDirectly() {
+            const iframe = document.getElementById('portfolioVideo');
+            if (iframe) {
+                // This method adds autoplay to the URL
+                const videoId = 'aoStAZj00OU';
+                const newSrc = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1&controls=1`;
+                iframe.src = newSrc;
+                
+                // Update button
+                const btn = document.querySelector('.yt-btn[onclick*="playPortfolioVideo"], .yt-btn[onclick*="playVideoDirectly"]');
+                if (btn) {
+                    btn.innerHTML = '<i class="fas fa-pause"></i> Pause Video';
+                    btn.setAttribute('onclick', 'pauseVideoDirectly()');
+                }
+            }
+        }
+
+        function pauseVideoDirectly() {
+            const iframe = document.getElementById('portfolioVideo');
+            if (iframe) {
+                // Send pause command
+                try {
+                    iframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+                } catch (e) {
+                    console.log('Could not pause via API');
+                }
+                
+                // Update button
+                const btn = document.querySelector('.yt-btn[onclick*="pauseVideoDirectly"]');
+                if (btn) {
+                    btn.innerHTML = '<i class="fas fa-play"></i> Play Video';
+                    btn.setAttribute('onclick', 'playVideoDirectly()');
+                }
+            }
+        }
     </script>
 </body>
 
 </html>
+
