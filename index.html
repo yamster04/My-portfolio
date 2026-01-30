@@ -1295,32 +1295,40 @@
                     </div>
                 </div>
                 
-                <div class="contact-form">
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <input type="text" placeholder="Your Name" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" placeholder="Your Email" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" placeholder="Your Phone (optional)">
-                        </div>
-                        <div class="form-group">
-                            <select required>
-                                <option value="" disabled selected>Type of Project</option>
-                                <option value="social">Social Media Edits</option>
-                                <option value="color">Color Grading</option>
-                                <option value="music">Music Video</option>
-                                <option value="other">Other</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <textarea placeholder="Tell me about your project..." required></textarea>
-                        </div>
-                        <button type="submit" class="btn">Send Message</button>
-                    </form>
-                </div>
+              <div class="contact-form">
+    <form action="https://formspree.io/f/mpqrlywy" method="POST" id="contactForm">
+        <div class="form-group">
+            <input type="text" name="name" placeholder="Your Name" required>
+        </div>
+        <div class="form-group">
+            <input type="email" name="_replyto" placeholder="Your Email" required>
+        </div>
+        <div class="form-group">
+            <input type="text" name="phone" placeholder="Your Phone (optional)">
+        </div>
+        <div class="form-group">
+            <select name="project_type" required>
+                <option value="" disabled selected>Type of Project</option>
+                <option value="social">Social Media Edits</option>
+                <option value="color">Color Grading</option>
+                <option value="music">Music Video</option>
+                <option value="other">Other</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <textarea name="message" placeholder="Tell me about your project..." required></textarea>
+        </div>
+        <!-- Formspree honeypot (optional but recommended) -->
+        <input type="text" name="_gotcha" style="display:none">
+        
+        <button type="submit" class="btn">Send Message</button>
+        
+        <p style="margin-top: 15px; font-size: 0.9rem; color: var(--text-light);">
+            <i class="fas fa-shield-alt" style="color: var(--gold); margin-right: 8px;"></i>
+            Messages go directly to my email. I'll reply within 24 hours.
+        </p>
+    </form>
+</div>
             </div>
         </div>
     </section>
@@ -1514,5 +1522,6 @@
 </body>
 
 </html>
+
 
 
