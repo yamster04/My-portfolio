@@ -1428,6 +1428,45 @@
             observer.observe(card);
         });
 
+            // ===== FORMSPREE FORM RESET =====
+        // Wait for Formspree to redirect, then reset form on page return
+        if (window.location.search.includes('formspree')) {
+            // Form was submitted, reset it
+            document.getElementById('contactForm')?.reset();
+            
+            // Show success message
+            const form = document.getElementById('contactForm');
+            if (form) {
+                const messageDiv = document.createElement('div');
+                messageDiv.innerHTML = `
+                    <div style="background: rgba(0, 128, 0, 0.1); color: #4CAF50; padding: 15px; border-radius: 5px; border-left: 4px solid #4CAF50; margin-top: 20px;">
+                        <i class="fas fa-check-circle"></i> 
+                        <strong>Message sent successfully!</strong> I'll reply within 24 hours.
+                    </div>
+                `;
+                form.appendChild(messageDiv);
+                
+                // Remove message after 10 seconds
+                setTimeout(() => {
+                    messageDiv.remove();
+                }, 10000);
+            }
+        }
+
+        // Add reset on submit
+        document.getElementById('contactForm')?.addEventListener('submit', function() {
+            // Store form data temporarily
+            const formData = new FormData(this);
+            
+            // Reset form after a delay (when Formspree takes over)
+            setTimeout(() => {
+                if (!window.location.href.includes('formspree.io/s/')) {
+                    this.reset();
+                }
+            }, 1000);
+        });
+  
+
         // ===== YOUTUBE VIDEO PLAYER CONTROLS =====
         function playPortfolioVideo() {
             const iframe = document.getElementById('portfolioVideo');
@@ -1525,6 +1564,7 @@
 </body>
 
 </html>
+
 
 
 
