@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/jpg" href="YM.jpg">
-    <title>YM"s Film | Video Editor</title>
+    <title>YM's Film | Video Editor</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         
@@ -425,22 +425,7 @@
 }
 /* ==== END HIRE ME CSS ==== */
 
-.yt-btn {
-    background: var(--accent);
-    color: white;
-    border: none;
-    padding: 12px 25px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: 600;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    transition: all 0.3s;
-    font-size: 1rem;
-}
-        
+
         .software-item {
             background: var(--dark-gray);
             padding: 10px 20px;
@@ -568,130 +553,7 @@
             color: var(--text-light);
             font-size: 0.9rem;
         }
-    /* ===== SHOWCASE PORTFOLIO ===== */
-.portfolio {
-    padding: 100px 0;
-    background: var(--section-bg);
-    text-align: center;
-}
-
-.showcase-container {
-    max-width: 900px;
-    margin: 0 auto;
-}
-
-/* ===== CINEMATIC 2.35:1 SHOWCASE ===== */
-.showcase-video {
-    position: relative;
-    width: 100%;
-    max-width: 1100px;
-    margin: 0 auto 40px;
-    background: #000;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
-    border-radius: 10px;
-    overflow: hidden;
-}
-
-/* Creates the 2.35:1 aspect ratio */
-.showcase-video::before {
-    content: '';
-    display: block;
-    padding-top: 42.55%; /* This is 1 ÷ 2.35 × 100% */
-}
-
-.showcase-video video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: contain; /* Shows your entire 2.35:1 video */
-}
-
-.showcase-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.5));
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 1;
-    transition: opacity 0.3s;
-    z-index: 2;
-}
-
-/* Adjust play button position */
-.play-btn {
-    background: var(--accent);
-    color: white;
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2.5rem;
-    cursor: pointer;
-    transition: transform 0.3s;
-    z-index: 3;
-}
-
-.play-btn:hover {
-    transform: scale(1.1);
-    background: var(--accent-light);
-}
-
-.showcase-title {
-    color: var(--gold);
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-}
-
-.showcase-description {
-    font-size: 1.2rem;
-    color: var(--text-light);
-    max-width: 700px;
-    margin: 0 auto 40px;
-    line-height: 1.8;
-}
-
-.skills-showcase {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 15px;
-    margin-top: 30px;
-}
-
-.skill-badge {
-    background: var(--dark-gray);
-    padding: 12px 25px;
-    border-radius: 25px;
-    border-left: 4px solid var(--accent);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.skill-badge i {
-    color: var(--gold);
-    font-size: 1.2rem;
-}
-
-@media (max-width: 768px) {
-    .showcase-video video {
-        height: 300px;
-    }
-    
-    .showcase-title {
-        font-size: 2rem;
-    }
-}
-
-/* ===== YOUTUBE SHOWCASE STYLING ===== */
+    /* ===== YOUTUBE SHOWCASE STYLING ===== */
 .portfolio {
     padding: 100px 0;
     background: var(--section-bg);
@@ -1002,6 +864,132 @@
                 height: 280px;
             }
         }
+        /* ===== SAMPLE WORKS – VIDEO GRID ===== */
+        .sample-works {
+            background: var(--dark);
+            padding: 100px 0 80px;
+        }
+
+        .sample-works-desc {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            margin: 10px 0 50px;
+            max-width: 600px;
+        }
+
+        /* CSS Grid layout — like a photo gallery */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: 260px 260px;
+            gap: 12px;
+        }
+
+        /* Large: top-left, spans 2 columns */
+        .vg-large {
+            grid-column: span 2;
+        }
+
+        /* Tall: right column, spans 2 rows */
+        .vg-tall {
+            grid-row: span 2;
+        }
+
+        /* Wide: bottom-left, spans 2 columns */
+        .vg-wide {
+            grid-column: span 2;
+        }
+
+        /* Each cell */
+        .vg-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            background: #000;
+            cursor: pointer;
+        }
+
+        .vg-item video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .vg-item:hover video {
+            transform: scale(1.04);
+        }
+
+        /* Dark gradient overlay + label */
+        .vg-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.65) 0%, transparent 50%);
+            display: flex;
+            align-items: flex-end;
+            padding: 16px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .vg-item:hover .vg-overlay {
+            opacity: 1;
+        }
+
+        .vg-tag {
+            background: var(--accent);
+            color: #fff;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 5px 12px;
+            border-radius: 20px;
+        }
+
+        /* Replace note */
+        .sw-replace-note {
+            margin: 28px auto 0;
+            max-width: 500px;
+            background: rgba(212, 175, 55, 0.07);
+            border: 1px dashed rgba(212, 175, 55, 0.3);
+            border-radius: 8px;
+            padding: 14px 20px;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            text-align: center;
+        }
+
+        .sw-replace-note i { color: var(--gold); margin-right: 6px; }
+        .sw-replace-note code {
+            color: var(--gold);
+            background: rgba(212,175,55,0.1);
+            padding: 1px 5px;
+            border-radius: 3px;
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .video-grid {
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: auto;
+            }
+            .vg-large  { grid-column: span 2; height: 200px; }
+            .vg-tall   { grid-row: span 1;    height: 200px; }
+            .vg-wide   { grid-column: span 2; height: 200px; }
+            .vg-item   { height: 180px; }
+        }
+
+        @media (max-width: 480px) {
+            .video-grid {
+                grid-template-columns: 1fr;
+            }
+            .vg-large, .vg-wide { grid-column: span 1; }
+            .vg-item { height: 200px; }
+        }
+
     </style>
 </head>
 <body>
@@ -1017,7 +1005,8 @@
     <li><a href="#about">About</a></li>
     <li><a href="#services">Services</a></li>
     <li><a href="#specialties">Specialties</a></li>
-    <li><a href="#portfolio">Portfolio</a></li>  <!-- ADD THIS LINE -->
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#sample-works">Sample Works</a></li>
     <li><a href="#contact">Contact</a></li>
 </ul>
                 <div class="menu-toggle">
@@ -1059,13 +1048,10 @@
                     
                     <p>Currently available for freelance projects and excited to collaborate with creators who value quality, emotion, and storytelling in their visual content.</p>
                 </div>
-       <!-- Your actual code should look like this: -->
-<div class="about-image">
+       <div class="about-image">
     <img src="mark-photo.jpg" alt="Mark Noel Yamomo - Video Editor" 
          style="width: 350px; height: 350px; border-radius: 50%; object-fit: cover; border: 5px solid var(--accent);">
 </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -1081,7 +1067,7 @@
                     </div>
                     <h3>Social Media Edits</h3>
                     <p>Engaging edits optimized for TikTok, Instagram Reels, YouTube Shorts, and other platforms. Designed to stop the scroll and capture attention.</p>
-                    <div class="price">"Let’s talk about your project"</div>
+                    <div class="price">Starting at ₱200+</div>
                 </div>
                 
                 <div class="service-card">
@@ -1090,7 +1076,7 @@
                     </div>
                     <h3>Color Grading</h3>
                     <p>Transform your footage with professional color correction and grading. Create moods, enhance visuals, and give your videos a cinematic look.</p>
-                    <div class="price">"Built around your aesthetic"</div>
+                    <div class="price">Starting at ₱300+</div>
                 </div>
                 
                 <div class="service-card">
@@ -1099,7 +1085,7 @@
                     </div>
                     <h3>Cinematic Film Editing</h3>
                     <p>From concept to final cut, I shape footage into film-like visuals using thoughtful pacing, clean cuts, and emotional storytelling.</p>
-                    <div class="price">"Contact for project details"</div>
+                    <div class="price">Starting at ₱500+</div>
                 </div>
                 
                 <div class="service-card">
@@ -1108,7 +1094,7 @@
                     </div>
                     <h3>Custom Packages</h3>
                     <p>Need multiple services? I create custom packages tailored to your specific needs and budget. Get in touch to discuss your project.</p>
-                    <div class="price">"Budget-friendly options"</div>
+                    <div class="price">Budget-friendly options</div>
                 </div>
             </div>
         </div>
@@ -1154,8 +1140,7 @@
             </div>
         </div>
     </section>
-
-   <!-- ===== CINEMATIC YOUTUBE SHOWCASE ===== -->
+<!-- ===== CINEMATIC YOUTUBE SHOWCASE ===== -->
 <section id="portfolio" class="portfolio">
     <div class="container">
         <div class="showcase-container">
@@ -1164,7 +1149,7 @@
                 One video that demonstrates my complete editing range. Watch this single showcase to see my skills in vlogging, transitions, color grading, trending edits, and cinematic storytelling.
             </p>
             
-            <!-- YouTube Embed Container - NO AUTOPLAY, NO PLAY BUTTON -->
+            <!-- YouTube Embed Container - NO AUTOPLAY -->
             <div class="youtube-container">
                 <div class="youtube-embed">
                     <iframe 
@@ -1175,14 +1160,20 @@
                         title="Mark Noel - Video Editing Showcase"
                         id="portfolioVideo">
                     </iframe>
+                    <div class="video-overlay" id="videoOverlay">
+                        <div class="play-btn-large" onclick="playPortfolioVideo()">
+                            <i class="fas fa-play-circle"></i>
+                            <span>Click to Play Video<br><small>Sound will play when you click</small></span>
+                        </div>
+                    </div>
                 </div>
                 <div class="youtube-controls">
                     <a href="https://youtu.be/aoStAZj00OU" target="_blank" class="yt-btn">
-                        <i class="fab fa-youtube"></i> Watch Video on YouTube
+                        <i class="fab fa-youtube"></i> Watch on YouTube
                     </a>
-                    <a href="#contact" class="yt-btn" style="background: var(--gold); color: var(--dark);">
-                        <i class="fas fa-film"></i> Hire Me for Edits
-                    </a>
+                    <button class="yt-btn" onclick="playPortfolioVideo()">
+                        <i class="fas fa-play"></i> Play Video Here
+                    </button>
                 </div>
             </div>
             
@@ -1232,12 +1223,68 @@
     </div>
 </section>
 
-<!-- Contact Section STARTS here -->
+<!-- ===== SAMPLE WORKS SECTION ===== -->
+<section id="sample-works" class="sample-works">
+    <div class="container">
+        <h2>More Sample Works</h2>
+        <p class="sample-works-desc">A closer look at my editing style — each clip showcasing a different skill and mood.</p>
+
+        <!-- Video Grid Layout -->
+        <div class="video-grid">
+
+            <!-- Large featured video (spans 2 cols) -->
+            <div class="vg-item vg-large">
+                <video autoplay muted loop playsinline>
+                    <source src="sample1.mp4" type="video/mp4">
+                </video>
+                <div class="vg-overlay">
+                    <span class="vg-tag">Cinematic Vlog</span>
+                </div>
+            </div>
+
+            <!-- Tall video (spans 2 rows) -->
+            <div class="vg-item vg-tall">
+                <video autoplay muted loop playsinline>
+                    <source src="sample2.mp4" type="video/mp4">
+                </video>
+                <div class="vg-overlay">
+                    <span class="vg-tag">Social Reel</span>
+                </div>
+            </div>
+
+            <!-- Small square -->
+            <div class="vg-item">
+                <video autoplay muted loop playsinline>
+                    <source src="sample3.mp4" type="video/mp4">
+                </video>
+                <div class="vg-overlay">
+                    <span class="vg-tag">Color Grading</span>
+                </div>
+            </div>
+
+            <!-- Small square -->
+            <div class="vg-item">
+                <video autoplay muted loop playsinline>
+                    <source src="sample4.mp4" type="video/mp4">
+                </video>
+                <div class="vg-overlay">
+                    <span class="vg-tag">Typography edit</span>
+                </div>
+            </div>
+
+            <!-- Wide video (spans 2 cols) -->
+            <div class="vg-item vg-wide">
+                <video autoplay muted loop playsinline>
+                    <source src="sample5.mp4" type="video/mp4">
+                </video>
+               
+            </div>
+
+        </div><!-- end video-grid -->
+
+
+<!-- Contact Section -->
 <section id="contact" class="contact">
-
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
         <div class="container">
             <h2>Let's Work Together</h2>
             <div class="contact-content">
@@ -1258,7 +1305,7 @@
                         </div>
                         <div>
                             <h4>Email</h4>
-                            <p>marknoelyamomo42@gmail.com</p>
+                            <p><a href="mailto:yamomomanoel@gmail.com">yamomomanoel@gmail.com</a></p>
                         </div>
                     </div>
                     
@@ -1282,53 +1329,48 @@
                         </div>
                     </div>
                     
-                    <div style="margin-top: 30px;">
-                        <h4>Connect with me</h4>
-                        <div class="social-contact">
-                            <a href="https://www.tiktok.com/@markdixon23" target="_blank">
-                                <i class="fab fa-tiktok"></i>
-                            </a>
-                            <a href="https://www.instagram.com/yamxter/" target="_blank">
-                                <i class="fab fa-instagram"></i>
-                            </a>
-                        </div>
-                    </div>
+                  <div style="margin-top: 30px;">
+    <h4>Connect with me</h4>
+    <div class="social-contact">
+        <a href="https://www.facebook.com/profile.php?id=61587310187042" target="_blank">
+            <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="https://www.tiktok.com/@markdixon23" target="_blank">
+            <i class="fab fa-tiktok"></i>
+        </a>
+        <a href="https://www.instagram.com/yamxter/" target="_blank">
+            <i class="fab fa-instagram"></i>
+        </a>
+    </div>
+</div>
                 </div>
                 
-              <div class="contact-form">
-    <form action="https://formspree.io/f/mpqrlywy" method="POST" id="contactForm">
-        <div class="form-group">
-            <input type="text" name="name" placeholder="Your Name" required>
-        </div>
-        <div class="form-group">
-            <input type="email" name="_replyto" placeholder="Your Email" required>
-        </div>
-        <div class="form-group">
-            <input type="text" name="phone" placeholder="Your Phone (optional)">
-        </div>
-        <div class="form-group">
-            <select name="project_type" required>
-                <option value="" disabled selected>Type of Project</option>
-                <option value="social">Social Media Edits</option>
-                <option value="color">Color Grading</option>
-                <option value="music">Music Video</option>
-                <option value="other">Other</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <textarea name="message" placeholder="Tell me about your project..." required></textarea>
-        </div>
-        <!-- Formspree honeypot (optional but recommended) -->
-        <input type="text" name="_gotcha" style="display:none">
-        
-        <button type="submit" class="btn">Send Message</button>
-        
-        <p style="margin-top: 15px; font-size: 0.9rem; color: var(--text-light);">
-            <i class="fas fa-shield-alt" style="color: var(--gold); margin-right: 8px;"></i>
-            Messages go directly to my email. I'll reply within 24 hours.
-        </p>
-    </form>
-</div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="Your Phone (optional)">
+                        </div>
+                        <div class="form-group">
+                            <select required>
+                                <option value="" disabled selected>Type of Project</option>
+                                <option value="social">Social Media Edits</option>
+                                <option value="color">Color Grading</option>
+                                <option value="music">Music Video</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Tell me about your project..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
             </div>
         </div>
     </section>
@@ -1346,7 +1388,7 @@
         </div>
     </footer>
 
-       <script>
+    <script>
         // Mobile Menu Toggle
         document.querySelector('.menu-toggle').addEventListener('click', function() {
             document.querySelector('.nav-links').classList.toggle('active');
@@ -1373,15 +1415,12 @@
             });
         });
 
-     document.getElementById('contactForm')?.addEventListener('submit', function() {
-    // Formspree will redirect to a thank you page
-    // You can keep this empty or add a loading spinner
-    const submitBtn = this.querySelector('button[type="submit"]');
-    if (submitBtn) {
-        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-        submitBtn.disabled = true;
-    }
-});
+        // Contact form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message, Mark! I will get back to you within 24 hours.');
+            this.reset();
+        });
 
         // Header background on scroll
         window.addEventListener('scroll', function() {
@@ -1427,146 +1466,47 @@
             card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
             observer.observe(card);
         });
-
-            // ===== FORMSPREE FORM RESET =====
-        // Wait for Formspree to redirect, then reset form on page return
-        if (window.location.search.includes('formspree')) {
-            // Form was submitted, reset it
-            document.getElementById('contactForm')?.reset();
-            
-            // Show success message
-            const form = document.getElementById('contactForm');
-            if (form) {
-                const messageDiv = document.createElement('div');
-                messageDiv.innerHTML = `
-                    <div style="background: rgba(0, 128, 0, 0.1); color: #4CAF50; padding: 15px; border-radius: 5px; border-left: 4px solid #4CAF50; margin-top: 20px;">
-                        <i class="fas fa-check-circle"></i> 
-                        <strong>Message sent successfully!</strong> I'll reply within 24 hours.
-                    </div>
-                `;
-                form.appendChild(messageDiv);
-                
-                // Remove message after 10 seconds
-                setTimeout(() => {
-                    messageDiv.remove();
-                }, 10000);
-            }
+             // ===== PORTFOLIO VIDEO CONTROLS =====
+function playPortfolioVideo() {
+    const iframe = document.getElementById('portfolioVideo');
+    const overlay = document.getElementById('videoOverlay');
+    
+    if (iframe && overlay) {
+        // Change iframe src to include autoplay
+        const currentSrc = iframe.src;
+        if (!currentSrc.includes('autoplay=1')) {
+            iframe.src = currentSrc.includes('?') 
+                ? currentSrc + '&autoplay=1' 
+                : currentSrc + '?autoplay=1';
         }
+        
+        // Send play command to YouTube (works if YouTube API is loaded)
+        try {
+            iframe.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+        } catch (e) {
+            console.log('YouTube API not ready yet');
+        }
+        
+        // Hide overlay with fade effect
+        overlay.style.opacity = '0';
+        overlay.style.pointerEvents = 'none';
+        
+        // Remove overlay completely after fade
+        setTimeout(() => {
+            overlay.style.display = 'none';
+        }, 500);
+    }
+}
 
-        // Add reset on submit
-        document.getElementById('contactForm')?.addEventListener('submit', function() {
-            // Store form data temporarily
-            const formData = new FormData(this);
-            
-            // Reset form after a delay (when Formspree takes over)
-            setTimeout(() => {
-                if (!window.location.href.includes('formspree.io/s/')) {
-                    this.reset();
-                }
-            }, 1000);
+// Make overlay clickable
+document.getElementById('videoOverlay')?.addEventListener('click', function() {
+    playPortfolioVideo();
+});
+        // ===== VIDEO GRID – unmute on hover =====
+        document.querySelectorAll('.vg-item video').forEach(vid => {
+            vid.closest('.vg-item').addEventListener('mouseenter', () => { vid.muted = false; });
+            vid.closest('.vg-item').addEventListener('mouseleave', () => { vid.muted = true; });
         });
-  
-
-        // ===== YOUTUBE VIDEO PLAYER CONTROLS =====
-        function playPortfolioVideo() {
-            const iframe = document.getElementById('portfolioVideo');
-            const playBtn = document.querySelector('.yt-btn[onclick="playPortfolioVideo()"]');
-            
-            if (iframe) {
-                // Get current iframe source
-                let currentSrc = iframe.src;
-                
-                // Remove any existing autoplay parameter
-                currentSrc = currentSrc.replace(/&?autoplay=1/g, '');
-                
-                // Add autoplay parameter
-                if (currentSrc.includes('?')) {
-                    currentSrc += '&autoplay=1';
-                } else {
-                    currentSrc += '?autoplay=1';
-                }
-                
-                // Update iframe source to trigger autoplay
-                iframe.src = currentSrc;
-                
-                // Try to send play command via YouTube API
-                try {
-                    iframe.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
-                } catch (e) {
-                    console.log('Playing via src change');
-                }
-                
-                // Change button to pause
-                if (playBtn) {
-                    playBtn.innerHTML = '<i class="fas fa-pause"></i> Pause Video';
-                    playBtn.setAttribute('onclick', 'pausePortfolioVideo()');
-                }
-            }
-        }
-
-        function pausePortfolioVideo() {
-            const iframe = document.getElementById('portfolioVideo');
-            const pauseBtn = document.querySelector('.yt-btn[onclick="pausePortfolioVideo()"]');
-            
-            if (iframe) {
-                // Send pause command to YouTube
-                try {
-                    iframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
-                } catch (e) {
-                    console.log('Pausing via YouTube API');
-                }
-                
-                // Change button back to play
-                if (pauseBtn) {
-                    pauseBtn.innerHTML = '<i class="fas fa-play"></i> Play Video';
-                    pauseBtn.setAttribute('onclick', 'playPortfolioVideo()');
-                }
-            }
-        }
-
-        // Alternative method: Direct play using YouTube player
-        function playVideoDirectly() {
-            const iframe = document.getElementById('portfolioVideo');
-            if (iframe) {
-                // This method adds autoplay to the URL
-                const videoId = 'aoStAZj00OU';
-                const newSrc = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1&controls=1`;
-                iframe.src = newSrc;
-                
-                // Update button
-                const btn = document.querySelector('.yt-btn[onclick*="playPortfolioVideo"], .yt-btn[onclick*="playVideoDirectly"]');
-                if (btn) {
-                    btn.innerHTML = '<i class="fas fa-pause"></i> Pause Video';
-                    btn.setAttribute('onclick', 'pauseVideoDirectly()');
-                }
-            }
-        }
-
-        function pauseVideoDirectly() {
-            const iframe = document.getElementById('portfolioVideo');
-            if (iframe) {
-                // Send pause command
-                try {
-                    iframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
-                } catch (e) {
-                    console.log('Could not pause via API');
-                }
-                
-                // Update button
-                const btn = document.querySelector('.yt-btn[onclick*="pauseVideoDirectly"]');
-                if (btn) {
-                    btn.innerHTML = '<i class="fas fa-play"></i> Play Video';
-                    btn.setAttribute('onclick', 'playVideoDirectly()');
-                }
-            }
-        }
     </script>
 </body>
-
 </html>
-
-
-
-
-
-
