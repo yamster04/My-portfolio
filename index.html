@@ -1049,32 +1049,33 @@
                     </div>
                 </div>
              <div class="contact-form">
-    <form id="contactForm" action="https://formspree.io/f/mpqrlywy" method="POST">
-        <div class="form-group">
-            <input type="text" name="name" placeholder="Your Name" required>
-        </div>
-        <div class="form-group">
-            <input type="email" name="_replyto" placeholder="Your Email" required>
-        </div>
-        <div class="form-group">
-            <input type="text" name="phone" placeholder="Your Phone (optional)">
-        </div>
-        <div class="form-group">
-            <select name="project_type" required>
-                <option value="" disabled selected>Type of Project</option>
-                <option value="social">Social Media Edits</option>
-                <option value="color">Color Grading</option>
-                <option value="music">Music Video</option>
-                <option value="other">Other</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <textarea name="message" placeholder="Tell me about your project..." required></textarea>
-        </div>
-        <input type="hidden" name="_subject" value="New Contact Form Submission - YM Edits">
-        <input type="hidden" name="_next" value="https://your-website.com/thanks.html">
-        <button type="submit" class="btn">Send Message</button>
-    </form>
+<form id="contactForm" action="https://formspree.io/f/mpqrlywy" method="POST">
+    <div class="form-group">
+        <input type="text" name="name" placeholder="Your Name" required>
+    </div>
+    <div class="form-group">
+        <input type="email" name="email" placeholder="Your Email" required>
+    </div>
+    <div class="form-group">
+        <input type="text" name="phone" placeholder="Your Phone (optional)">
+    </div>
+    <div class="form-group">
+        <select name="project" required>
+            <option value="" disabled selected>Type of Project</option>
+            <option value="social">Social Media Edits</option>
+            <option value="color">Color Grading</option>
+            <option value="music">Music Video</option>
+            <option value="other">Other</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <textarea name="message" placeholder="Tell me about your project..." required></textarea>
+    </div>
+
+    <input type="hidden" name="_subject" value="New Contact Form Submission - YM Edits">
+
+    <button type="submit" class="btn">Send Message</button>
+</form>
 </div>
             </div>
         </div>
