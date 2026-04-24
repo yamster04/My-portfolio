@@ -1108,11 +1108,9 @@
                 }
             });
         });
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Thank you for your message! I will get back to you within 24 hours.');
-            this.reset();
-        });
+        document.getElementById('contactForm').addEventListener('submit', function() {
+    alert('Message sent successfully!'); this.reset();
+});
         window.addEventListener('scroll', function() {
             const header = document.querySelector('header');
             if (window.scrollY > 100) {
